@@ -1,0 +1,270 @@
+[
+    {
+        "id": "b6d466f19ccdf7a5",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4e3e9f30db55aacc",
+        "type": "inject",
+        "z": "b6d466f19ccdf7a5",
+        "name": "A",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Vaga A está disponível",
+        "payloadType": "str",
+        "x": 170,
+        "y": 440,
+        "wires": [
+            [
+                "6340b7931ffed303"
+            ]
+        ]
+    },
+    {
+        "id": "ba45a075fc54062c",
+        "type": "mqtt out",
+        "z": "b6d466f19ccdf7a5",
+        "name": "",
+        "topic": "vagas",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f5e6bc053382e2fe",
+        "x": 210,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "f559b969fb3d6b17",
+        "type": "mqtt in",
+        "z": "b6d466f19ccdf7a5",
+        "name": "",
+        "topic": "vagas",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f5e6bc053382e2fe",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "eebfe1b67a40ebd7",
+                "6340b7931ffed303"
+            ]
+        ]
+    },
+    {
+        "id": "eebfe1b67a40ebd7",
+        "type": "debug",
+        "z": "b6d466f19ccdf7a5",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "746b61748d1c08d4",
+        "type": "aedes broker",
+        "z": "b6d466f19ccdf7a5",
+        "name": "",
+        "mqtt_port": 1883,
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "certname": "",
+        "keyname": "",
+        "dburl": "",
+        "usetls": false,
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "ba45a075fc54062c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6340b7931ffed303",
+        "type": "ui_text",
+        "z": "b6d466f19ccdf7a5",
+        "group": "61d2dced.3db8f4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "VAGAS:",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 520,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "18b9c0915669493e",
+        "type": "inject",
+        "z": "b6d466f19ccdf7a5",
+        "name": "B",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Vaga B está disponível",
+        "payloadType": "str",
+        "x": 170,
+        "y": 500,
+        "wires": [
+            [
+                "6340b7931ffed303"
+            ]
+        ]
+    },
+    {
+        "id": "645548caa8a3c788",
+        "type": "inject",
+        "z": "b6d466f19ccdf7a5",
+        "name": "AB",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Vaga AB (2) está disponível",
+        "payloadType": "str",
+        "x": 166,
+        "y": 546,
+        "wires": [
+            [
+                "6340b7931ffed303"
+            ]
+        ]
+    },
+    {
+        "id": "5880994060520b33",
+        "type": "inject",
+        "z": "b6d466f19ccdf7a5",
+        "name": "x",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Nenhuma Vaga está disponível",
+        "payloadType": "str",
+        "x": 150,
+        "y": 600,
+        "wires": [
+            [
+                "6340b7931ffed303"
+            ]
+        ]
+    },
+    {
+        "id": "f5e6bc053382e2fe",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "61d2dced.3db8f4",
+        "type": "ui_group",
+        "name": "estacionamento",
+        "tab": "f12ad659c57ee1a2",
+        "order": 1,
+        "disp": true,
+        "width": "22",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f12ad659c57ee1a2",
+        "type": "ui_tab",
+        "name": "estacioamento",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
